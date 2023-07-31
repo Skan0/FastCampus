@@ -142,6 +142,27 @@ html 파일로 Export
 
 open("news/summary.html", "w")
 
+Part3 크롤링
+ID : 한번만 사용
+주로 HTML 객체를 고유하게 지정하고 찾을 용도로 사용함
 
+Class : 여러번 사용
+UL아래 LI가 여러개 있을 경우 사용 CSS을 적용하는 용도로 사용
+
+Bs4(Beautiful Soup 4)
+HTML또는 XML 구조에서 필요한값만 뽑아주는 '체'
+import beautifulsoup
+데이터파일 open("index.html", encoding="utf-8").read()
+bs =beautifulsoup(데이터파일, "html.parser)
+print(bs)
+
+여러건이 묶여있는 데이터 추출
+find()
+결과가 1개 
+결과를 for로 돌릴 수 없음
+
+find_all
+결과 여러개
+결과를 for로 돌릴 수 있음
 
 
