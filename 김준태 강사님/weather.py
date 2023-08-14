@@ -1,18 +1,18 @@
 import requests
 import json
 
-country = {
-    "Seoul":(37.566,126.9784),
-    "London":(51.5085,-0.1257),
-    "New York":(56.25,-5.2833)
-}
-for i in range(country):
-    response = requests.get('https://api.open-meteo.com/v1/forecast?latitude={i[0]}&longitude={i[1]}&current_weather=true')
-    data =json.loads(response.text)
-    print(data['current_weather']['temperature'])
+cities = [
+    {'name': 'Seoul', 'latitude': 37.56, 'longitude': 126.97},
+    {'name': 'London', 'latitude': 51.50, 'longitude': -0.12},
+    {'name': 'New York', 'latitude': 40.71, 'longitude': -74.00}
+]
 
-def get_weather(city):
-     response = requests.get('https://api.open-meteo.com/v1/forecast?latitude={country[city][0]}&longitude={country[city][1]}&current_weather=true')
+def get_weather(latitude, longitude):
+    url = f'https://api.open-meteo.com/v1/forecast?latitude={latitude}&longitude={longitude}&current_weather=true&timezone=auto'
+    response = requests.get(url)
+    json_data = json.loads(response.text)
+    print(f"{json_data['current_weather']['temperature']}도")
 
-
-    
+for city in cities:
+    print(f"{city['name']}의 날씨")
+    get_weather(city['latitude'], city['longitude'])
